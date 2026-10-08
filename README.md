@@ -60,6 +60,7 @@ Pada 1.024 payload acak 64 byte tanpa stall, start core ke commit adalah median/
 - [Riset dan keputusan desain](docs/research.md)
 - [Audit dan perubahan](docs/review.md)
 - [Diagram draw.io yang dapat diedit](diagrams/SENTINEL_Design.drawio)
+- [Cara mengedit dan membangun ulang visual](docs/design-assets.md)
 
 ## Kontribusi dan hak penggunaan
 

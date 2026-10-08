@@ -10,8 +10,9 @@ for name in required:assert (v/name).is_file(),f'Missing completed result {name}
 for name in required:shutil.copy2(v/name,e/name)
 paths=sorted(p for p in root.rglob('*') if p.is_file() and
  (p.is_relative_to(e) or p.is_relative_to(root/'rtl') or p.is_relative_to(root/'scripts') or
+  p.is_relative_to(root/'figures') or p.is_relative_to(root/'diagrams') or
   (p.is_relative_to(v) and (p.suffix in ['.sv','.py','.sh'] or 'vendor' in p.parts))) and
- '__pycache__' not in p.parts and not any(x.startswith('build') for x in p.parts))
+ '__pycache__' not in p.parts and not any(x.startswith('build') for x in p.parts[:-1]))
 (root/'SHA256SUMS.txt').write_text(''.join(hashlib.sha256(p.read_bytes()).hexdigest()+'  '+
  p.relative_to(root).as_posix()+'\n' for p in paths),encoding='utf-8',newline='\n')
 print(f'Captured evidence; {len(paths)} files hashed.')
