@@ -12,7 +12,7 @@
 | p99 belum punya dataset khusus | 1.024 sampel 64 byte acak tanpa stall | Median/p99 140 siklus simulasi |
 | Assertion sendiri belum diuji | Dua mutant acceptance harus gagal | mutation_results.json |
 | Diagram hanya gambar jadi | draw.io 4 halaman dan PNG yang konsisten | Konsep solusi, arsitektur, alur penerimaan, budget |
-| Paket belum dapat dipelihara otomatis | Make targets, CI, hash evidence/source, panduan demo | CI diuji setelah publikasi |
+| Paket belum dapat dipelihara otomatis | Make targets, CI, hash evidence/source, panduan demo | [CI lulus setelah publikasi](https://github.com/Fijarsatria/SENTINEL/actions/runs/37769224704) |
 
 ## Pekerjaan berikut yang menentukan kesiapan board
 

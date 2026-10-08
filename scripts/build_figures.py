@@ -59,7 +59,7 @@ class Diagram:
    ft=font(n['size'],shape!='text');ls=lines(d,n['label'],ft,w-28);lh=n['size']+5
    yy=y+(h-lh*len(ls))/2
    for line in ls:d.text((x+(w-d.textlength(line,font=ft))/2,yy),line,font=ft,fill=INK);yy+=lh
-   style=('rhombus;' if shape=='diamond' else 'text;strokeColor=none;fillColor=none;' if shape=='text' else 'rounded=0;')+'whiteSpace=wrap;html=1;fontFamily=Arial;fontSize='+str(n['size'])+';fontColor='+INK+';strokeColor='+INK+';fillColor='+n['fill']+';'
+   style=('rhombus;' if shape=='diamond' else 'text;' if shape=='text' else 'rounded=0;')+'whiteSpace=wrap;html=1;fontFamily=Arial;fontSize='+str(n['size'])+';fontStyle='+('0' if shape=='text' else '1')+';fontColor='+INK+';strokeColor='+('none' if shape=='text' else INK)+';fillColor='+('none' if shape=='text' else n['fill'])+';'
    c=E.SubElement(cells,'mxCell',id=n['id'],value=html.escape(n['label']).replace('\n','<br>'),style=style,vertex='1',parent='1')
    E.SubElement(c,'mxGeometry',x=str(x),y=str(y),width=str(w),height=str(h),attrib={'as':'geometry'})
   img.save(F/(self.name+'.png'))
@@ -94,7 +94,7 @@ a.edge('hps','adapter',[(1000,115),(1000,320),(1000,350)],label='konteks',pos=(1
 a.node('legend','Biru/hijau = RTL diuji; abu-abu = rencana integrasi. Parser belum diuji end-to-end dengan core.',300,765,1050,42,shape='text',size=22);D.append(a)
 f=Diagram('03_acceptance',1400,1100)
 f.band('Penerimaan per transaksi',20,20,920,1060);f.band('Pembatalan dan pemulihan',970,20,410,1060)
-f.node('ready','READY dan sesi aktif\nSatu frame sedang diproses',310,65,330,95,GRAY)
+f.node('ready','READY dan sesi aktif\nSiap untuk satu frame',310,65,330,95,GRAY)
 f.node('frame','Kumpulkan lalu freeze frame\nJumlah byte = 32 + L + 16',310,205,330,95,BLUE)
 f.node('crypt','Ascon RX → buffer privat\nTunggu hasil autentikasi',310,345,330,95,BLUE)
 f.node('policy','Tag / format sah?\nSesi / tujuan benar?\nSequence baru?',250,485,450,170,BLUE,'diamond',23)
@@ -107,16 +107,18 @@ f.node('cleanup','Buang shadow\nScrub buffer privat\nLive state tetap',1030,710,
 f.node('recover','Cleanup → READY\nReset/fault mencabut sesi\nProvisioning baru',1000,955,345,105,GRAY,size=23)
 for aa,bb in [('ready','frame'),('frame','crypt'),('crypt','policy'),('policy','release'),('release','last'),('last','commit')]:
  n=next(x for x in f.nodes if x['id']==aa);m=next(x for x in f.nodes if x['id']==bb)
- f.edge(aa,bb,[(n['x']+n['w']/2,n['y']+n['h']),(m['x']+m['w']/2,m['y'])],label='ya' if aa in ['policy','last'] else '',pos=(690,n['y']+n['h']+8) if aa in ['policy','last'] else None)
+ f.edge(aa,bb,[(n['x']+n['w']/2,n['y']+n['h']),(m['x']+m['w']/2,m['y'])],label='ya' if aa in ['policy','last'] else '',pos=(490,n['y']+n['h']+8) if aa in ['policy','last'] else None)
 f.edge('frame','reject',[(640,252),(880,252),(880,545),(1030,545)],label='terpotong / berlebih / overflow',pos=(675,215))
 f.edge('policy','reject',[(670,570),(1030,570)],label='gagal',pos=(800,540))
 f.edge('release','stall',[(310,745),(270,745)])
-f.edge('stall','release',[(160,700),(160,670),(475,670),(475,700)])
+f.edge('stall','release',[(160,700),(160,670),(475,670),(475,700)],label='ready = 1',pos=(175,642))
 f.edge('last','release',[(670,877),(825,877),(825,745),(640,745)],label='belum',pos=(752,886))
 f.edge('reject','cleanup',[(1175,605),(1175,710)])
 f.edge('cleanup','recover',[(1175,840),(1175,955)])
 f.edge('commit','recover',[(665,1022),(1000,1022)],label='scrub',pos=(800,988))
-f.node('interrupt','Abort / reset / timeout menutup gate.',45,945,850,30,shape='text',size=21);D.append(f)
+f.node('interrupt','Abort / reset / timeout\nTutup gate di setiap tahap',1000,190,345,160,GRAY,size=23)
+f.edge('interrupt','reject',[(1172,350),(1172,485)],dashed=True)
+D.append(f)
 b=Diagram('04_budget',1400,710)
 b.node('title','Anggaran integrasi DE10-Nano   belum hasil fitting',30,10,1340,55,shape='text',size=31)
 rows=[('Resource','Batas rancangan','Kapasitas A6','Porsi anggaran'),('ALM','≤6.000','41.910','14,32%'),('Register','≤5.000','167.640','2,98%'),('M10K','≤6 blok','557 blok','1,08%'),('DSP','0','112 blok','0%'),('FPGA PLL','≤1','6','16,67%')]
@@ -129,7 +131,7 @@ b.node('note','Pemetaan M10K bergantung pada bank, port dan inference. Laporkan 
 mx=E.Element('mxfile',host='app.diagrams.net',version='24.7.17',type='device')
 for item in D:item.export(mx)
 (R/'diagrams').mkdir(exist_ok=True)
-E.indent(mx);E.ElementTree(mx).write(R/'diagrams/SENTINEL_Design.drawio',encoding='utf-8',xml_declaration=True)
+E.indent(mx);(R/'diagrams/SENTINEL_Design.drawio').write_bytes(E.tostring(mx,encoding='utf-8',xml_declaration=True))
 
 # Waveform from CSV, with exact event boundaries derived from the run.
 rows=list(csv.DictReader((R/'evidence/trace.csv').open()))
