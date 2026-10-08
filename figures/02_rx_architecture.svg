@@ -1,0 +1,57 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="585" viewBox="0 0 1600 585"><title>Diagram blok SENTINEL RX IP dan adapter aplikasi</title><defs><marker id="a" viewBox="0 0 12 12" refX="11" refY="6" markerWidth="11" markerHeight="11" orient="auto"><path d="M1 1 L11 6 L1 11Z" fill="#111"/></marker></defs><rect width="100%" height="100%" fill="white"/><style>text{font-family:Arial,Helvetica,sans-serif;fill:#111}path,line{stroke-linecap:round;stroke-linejoin:round}</style>
+<rect x="15" y="110" width="1570" height="455" rx="0" fill="white" stroke="#111" stroke-width="2"/>
+<text x="32" y="141" font-size="23" font-weight="700" text-anchor="start">FPGA fabric</text>
+<rect x="32" y="175" width="485" height="204" rx="0" fill="#FAFAFA" stroke="#111" stroke-width="2"/>
+<text x="43" y="202" font-size="22" font-weight="700" text-anchor="start">clk_io 25 MHz</text>
+<text x="653" y="202" font-size="22" font-weight="700" text-anchor="start">clk_sys 50 MHz</text>
+<rect x="640" y="26" width="265" height="70" rx="0" fill="white" stroke="#111" stroke-width="2"/>
+<text x="772.5" y="53.76" font-size="22" font-weight="400" text-anchor="middle">HPS melalui</text>
+<text x="772.5" y="82.75999999999999" font-size="22" font-weight="400" text-anchor="middle">bridge MMIO</text>
+<rect x="945" y="128" width="280" height="70" rx="0" fill="white" stroke="#111" stroke-width="2"/>
+<text x="1085.0" y="155.76" font-size="22" font-weight="400" text-anchor="middle">key_session_ctrl</text>
+<text x="1085.0" y="184.76" font-size="22" font-weight="400" text-anchor="middle">Kunci write only</text>
+<path d="M906 61 H1085 V123" fill="none" stroke="#111" stroke-width="2" stroke-dasharray="8 6" marker-end="url(#a)"/>
+<path d="M1085 199 V241" fill="none" stroke="#111" stroke-width="2" stroke-dasharray="8 6" marker-end="url(#a)"/>
+<text x="159" y="230" font-size="21" font-weight="400" text-anchor="middle">SCLK · MOSI · CS</text>
+<rect x="47" y="245" width="226" height="109" rx="0" fill="white" stroke="#111" stroke-width="2"/>
+<text x="160.0" y="291.92" font-size="24" font-weight="400" text-anchor="middle">spi_rx</text>
+<text x="160.0" y="322.92" font-size="24" font-weight="400" text-anchor="middle">Byte dan token</text>
+<rect x="321" y="245" width="235" height="109" rx="0" fill="white" stroke="#111" stroke-width="2"/>
+<text x="438.5" y="291.92" font-size="24" font-weight="400" text-anchor="middle">cdc_fifo</text>
+<text x="438.5" y="322.92" font-size="24" font-weight="400" text-anchor="middle">128 × 10 bit</text>
+<rect x="604" y="245" width="270" height="109" rx="0" fill="white" stroke="#111" stroke-width="2"/>
+<text x="739.0" y="292.09" font-size="23" font-weight="400" text-anchor="middle">frame_parser</text>
+<text x="739.0" y="322.09" font-size="23" font-weight="400" text-anchor="middle">frame_store 112 byte</text>
+<rect x="922" y="245" width="303" height="109" rx="0" fill="#EEEEEE" stroke="#111" stroke-width="2"/>
+<text x="1073.5" y="292.09" font-size="23" font-weight="400" text-anchor="middle">Ascon-AEAD128 v1</text>
+<text x="1073.5" y="322.09" font-size="23" font-weight="400" text-anchor="middle">32 bit · 1 round/siklus</text>
+<rect x="1273" y="245" width="278" height="109" rx="0" fill="#EEEEEE" stroke="#111" stroke-width="2"/>
+<text x="1412.0" y="291.75" font-size="25" font-weight="400" text-anchor="middle">Buffer privat</text>
+<text x="1412.0" y="323.75" font-size="25" font-weight="400" text-anchor="middle">64 byte</text>
+<path d="M274 300 H316" fill="none" stroke="#111" stroke-width="2" marker-end="url(#a)"/>
+<path d="M557 300 H599" fill="none" stroke="#111" stroke-width="2" marker-end="url(#a)"/>
+<path d="M875 300 H917" fill="none" stroke="#111" stroke-width="2" marker-end="url(#a)"/>
+<path d="M1226 300 H1268" fill="none" stroke="#111" stroke-width="2" marker-end="url(#a)"/>
+<rect x="1273" y="422" width="278" height="108" rx="0" fill="#EEEEEE" stroke="#111" stroke-width="2"/>
+<text x="1412.0" y="468.59" font-size="23" font-weight="400" text-anchor="middle">sentinel_guard</text>
+<text x="1412.0" y="498.59" font-size="23" font-weight="400" text-anchor="middle">Tag + sesi + sequence</text>
+<rect x="922" y="422" width="303" height="108" rx="0" fill="#EEEEEE" stroke="#111" stroke-width="2"/>
+<text x="1073.5" y="468.42" font-size="24" font-weight="400" text-anchor="middle">sentinel_app</text>
+<text x="1073.5" y="499.42" font-size="24" font-weight="400" text-anchor="middle">Shadow dan commit</text>
+<rect x="604" y="422" width="270" height="108" rx="0" fill="#EEEEEE" stroke="#111" stroke-width="2"/>
+<text x="739.0" y="468.42" font-size="24" font-weight="400" text-anchor="middle">Register aktif</text>
+<text x="739.0" y="499.42" font-size="24" font-weight="400" text-anchor="middle">LED demo</text>
+<path d="M1510 355 V417" fill="none" stroke="#111" stroke-width="2" marker-end="url(#a)"/>
+<path d="M1272 476 H1230" fill="none" stroke="#111" stroke-width="2" marker-end="url(#a)"/>
+<path d="M921 476 H879" fill="none" stroke="#111" stroke-width="2" marker-end="url(#a)"/>
+<path d="M1074 355 V379 H1450 V417" fill="none" stroke="#111" stroke-width="2" stroke-dasharray="8 6" marker-end="url(#a)"/>
+<text x="1195" y="373" font-size="20" font-weight="400" text-anchor="middle">auth_valid &amp; auth</text>
+<path d="M739 355 V405 H1330 V417" fill="none" stroke="#111" stroke-width="2" stroke-dasharray="8 6" marker-end="url(#a)"/>
+<text x="1070" y="399" font-size="20" font-weight="400" text-anchor="middle">Konteks frame dibekukan</text>
+<path d="M1074 531 V549 H1412 V534" fill="none" stroke="#111" stroke-width="2" stroke-dasharray="8 6" marker-end="url(#a)"/>
+<text x="1090" y="579" font-size="19" font-weight="400" text-anchor="middle">app_commit memperbarui last_seq</text>
+<text x="40" y="430" font-size="19" font-weight="400" text-anchor="start">DATA  / SOP / EOP / ABORT</text>
+<text x="40" y="460" font-size="19" font-weight="400" text-anchor="start">FIFO melintasi dua domain clock.</text>
+<text x="40" y="490" font-size="19" font-weight="400" text-anchor="start">Garis putus-putus: kontrol.</text>
+<text x="40" y="520" font-size="18" font-weight="400" text-anchor="start">Bidang abu-abu: RTL telah disimulasikan.</text>
+</svg>

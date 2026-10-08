@@ -1,0 +1,323 @@
+<?xml version='1.0' encoding='utf-8'?>
+<mxfile host="app.diagrams.net" version="24.7.17" type="device">
+  <diagram name="01_solution" id="01_solution">
+    <mxGraphModel dx="1400" dy="520" grid="1" gridSize="10" page="1" pageScale="1" pageWidth="1400" pageHeight="520">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="edge0" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=block;strokeColor=#183544;fontSize=20;" edge="1" parent="1" source="a" target="b">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="edge1" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=block;strokeColor=#183544;fontSize=20;" edge="1" parent="1" source="b" target="c">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="edge2" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=block;strokeColor=#183544;fontSize=20;" edge="1" parent="1" source="c" target="d">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="edge3" value="gagal" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=block;strokeColor=#183544;fontSize=20;" edge="1" parent="1" source="b" target="reject">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="label" value="Dari paket serial ke efek aplikasi yang sah" style="text;strokeColor=none;fillColor=none;whiteSpace=wrap;html=1;fontFamily=Arial;fontSize=30;fontColor=#183544;strokeColor=#183544;fillColor=#DCEAF4;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="30" y="10" width="1340" height="50" />
+        </mxCell>
+        <mxCell id="a" value="Paket diterima&lt;br&gt;Header + ciphertext + tag" style="rounded=0;whiteSpace=wrap;html=1;fontFamily=Arial;fontSize=27;fontColor=#183544;strokeColor=#183544;fillColor=#EEF0F2;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="30" y="120" width="310" height="150" />
+        </mxCell>
+        <mxCell id="b" value="Buffer privat&lt;br&gt;Plaintext belum digunakan" style="rounded=0;whiteSpace=wrap;html=1;fontFamily=Arial;fontSize=27;fontColor=#183544;strokeColor=#183544;fillColor=#DCEAF4;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="365" y="120" width="310" height="150" />
+        </mxCell>
+        <mxCell id="c" value="Shadow aplikasi&lt;br&gt;Tag dan kebijakan telah lolos" style="rounded=0;whiteSpace=wrap;html=1;fontFamily=Arial;fontSize=27;fontColor=#183544;strokeColor=#183544;fillColor=#E0EFEA;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="700" y="120" width="310" height="150" />
+        </mxCell>
+        <mxCell id="d" value="Register aktif&lt;br&gt;Satu edge commit" style="rounded=0;whiteSpace=wrap;html=1;fontFamily=Arial;fontSize=27;fontColor=#183544;strokeColor=#183544;fillColor=#E0EFEA;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="1035" y="120" width="310" height="150" />
+        </mxCell>
+        <mxCell id="reject" value="Tag salah / replay / frame tidak lengkap&lt;br&gt;Commit = 0; live state dan last_seq tetap" style="rounded=0;whiteSpace=wrap;html=1;fontFamily=Arial;fontSize=27;fontColor=#183544;strokeColor=#183544;fillColor=#FBE9E7;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="300" y="345" width="800" height="100" />
+        </mxCell>
+        <mxCell id="note" value="FPGA fabric memutuskan penerimaan. HPS tepercaya menyediakan kunci dan konteks sesi." style="text;strokeColor=none;fillColor=none;whiteSpace=wrap;html=1;fontFamily=Arial;fontSize=23;fontColor=#183544;strokeColor=#183544;fillColor=#DCEAF4;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="30" y="455" width="1340" height="50" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram name="02_architecture" id="02_architecture">
+    <mxGraphModel dx="1400" dy="850" grid="1" gridSize="10" page="1" pageScale="1" pageWidth="1400" pageHeight="850">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="band0" value="Batas kepercayaan   FPGA fabric memutuskan penerimaan" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#F7F9FA;strokeColor=#BDC9CF;verticalAlign=top;align=left;spacing=12;fontSize=22;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="20" y="160" width="1360" height="655" />
+        </mxCell>
+        <mxCell id="band1" value="clk_io 25 MHz" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#F7F9FA;strokeColor=#BDC9CF;verticalAlign=top;align=left;spacing=12;fontSize=22;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="35" y="215" width="235" height="340" />
+        </mxCell>
+        <mxCell id="band2" value="clk_sys 50 MHz   RTL dan integrasi" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#F7F9FA;strokeColor=#BDC9CF;verticalAlign=top;align=left;spacing=12;fontSize=22;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="290" y="215" width="1075" height="340" />
+        </mxCell>
+        <mxCell id="band3" value="clk_sys 50 MHz   penerimaan dan efek transaksi" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#F7F9FA;strokeColor=#BDC9CF;verticalAlign=top;align=left;spacing=12;fontSize=22;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="35" y="570" width="1330" height="185" />
+        </mxCell>
+        <mxCell id="edge0" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=block;strokeColor=#183544;fontSize=20;" edge="1" parent="1" source="spi" target="fifo">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="edge1" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=block;strokeColor=#183544;fontSize=20;" edge="1" parent="1" source="fifo" target="parser">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="edge2" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=block;strokeColor=#183544;fontSize=20;" edge="1" parent="1" source="parser" target="adapter">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="edge3" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=block;strokeColor=#183544;fontSize=20;" edge="1" parent="1" source="adapter" target="core">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="edge4" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=block;strokeColor=#183544;fontSize=20;" edge="1" parent="1" source="core" target="private">
+          <mxGeometry as="geometry" relative="1">
+            <Array as="points">
+              <mxPoint x="1252" y="565" />
+              <mxPoint x="1100" y="565" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="edge5" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=block;strokeColor=#183544;fontSize=20;" edge="1" parent="1" source="private" target="shadow">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="edge6" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=block;strokeColor=#183544;fontSize=20;" edge="1" parent="1" source="shadow" target="live">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="edge7" value="konteks" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=block;strokeColor=#183544;fontSize=20;dashed=1;" edge="1" parent="1" source="hps" target="adapter">
+          <mxGeometry as="geometry" relative="1">
+            <Array as="points">
+              <mxPoint x="1000" y="320" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="hps" value="HPS tepercaya&lt;br&gt;Provisioning kunci/sesi dan status publik" style="rounded=0;whiteSpace=wrap;html=1;fontFamily=Arial;fontSize=25;fontColor=#183544;strokeColor=#183544;fillColor=#EEF0F2;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="300" y="20" width="740" height="95" />
+        </mxCell>
+        <mxCell id="spi" value="SPI mode 0&lt;br&gt;2 Mbit/s target&lt;br&gt;Rencana" style="rounded=0;whiteSpace=wrap;html=1;fontFamily=Arial;fontSize=24;fontColor=#183544;strokeColor=#183544;fillColor=#EEF0F2;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="55" y="350" width="195" height="145" />
+        </mxCell>
+        <mxCell id="fifo" value="DCFIFO 128 × 10&lt;br&gt;Byte + SOP/EOP/ABORT&lt;br&gt;Rencana" style="rounded=0;whiteSpace=wrap;html=1;fontFamily=Arial;fontSize=24;fontColor=#183544;strokeColor=#183544;fillColor=#EEF0F2;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="315" y="350" width="230" height="145" />
+        </mxCell>
+        <mxCell id="parser" value="Parser + frame store&lt;br&gt;32 + L + 16 byte&lt;br&gt;RTL diuji terpisah" style="rounded=0;whiteSpace=wrap;html=1;fontFamily=Arial;fontSize=24;fontColor=#183544;strokeColor=#183544;fillColor=#DCEAF4;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="595" y="350" width="240" height="145" />
+        </mxCell>
+        <mxCell id="adapter" value="Adapter Ascon&lt;br&gt;Key / nonce / AD / CT / tag&lt;br&gt;Rencana" style="rounded=0;whiteSpace=wrap;html=1;fontFamily=Arial;fontSize=24;fontColor=#183544;strokeColor=#183544;fillColor=#EEF0F2;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="885" y="350" width="230" height="145" />
+        </mxCell>
+        <mxCell id="core" value="Ascon RX&lt;br&gt;32 bit&lt;br&gt;1 round / siklus&lt;br&gt;RTL diuji" style="rounded=0;whiteSpace=wrap;html=1;fontFamily=Arial;fontSize=24;fontColor=#183544;strokeColor=#183544;fillColor=#DCEAF4;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="1160" y="350" width="185" height="145" />
+        </mxCell>
+        <mxCell id="private" value="Buffer privat dan guard&lt;br&gt;Autentikasi + kebijakan&lt;br&gt;16 × 32 bit" style="rounded=0;whiteSpace=wrap;html=1;fontFamily=Arial;fontSize=26;fontColor=#183544;strokeColor=#183544;fillColor=#DCEAF4;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="900" y="605" width="400" height="115" />
+        </mxCell>
+        <mxCell id="shadow" value="Shadow aplikasi&lt;br&gt;ready / valid" style="rounded=0;whiteSpace=wrap;html=1;fontFamily=Arial;fontSize=26;fontColor=#183544;strokeColor=#183544;fillColor=#E0EFEA;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="520" y="605" width="290" height="115" />
+        </mxCell>
+        <mxCell id="live" value="Register aktif + last_seq&lt;br&gt;Commit atomik" style="rounded=0;whiteSpace=wrap;html=1;fontFamily=Arial;fontSize=26;fontColor=#183544;strokeColor=#183544;fillColor=#E0EFEA;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="100" y="605" width="330" height="115" />
+        </mxCell>
+        <mxCell id="legend" value="Biru/hijau = RTL diuji; abu-abu = rencana integrasi. Parser belum diuji end-to-end dengan core." style="text;strokeColor=none;fillColor=none;whiteSpace=wrap;html=1;fontFamily=Arial;fontSize=22;fontColor=#183544;strokeColor=#183544;fillColor=#DCEAF4;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="300" y="765" width="1050" height="42" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram name="03_acceptance" id="03_acceptance">
+    <mxGraphModel dx="1400" dy="1100" grid="1" gridSize="10" page="1" pageScale="1" pageWidth="1400" pageHeight="1100">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="band0" value="Penerimaan per transaksi" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#F7F9FA;strokeColor=#BDC9CF;verticalAlign=top;align=left;spacing=12;fontSize=22;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="20" y="20" width="920" height="1060" />
+        </mxCell>
+        <mxCell id="band1" value="Pembatalan dan pemulihan" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#F7F9FA;strokeColor=#BDC9CF;verticalAlign=top;align=left;spacing=12;fontSize=22;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="970" y="20" width="410" height="1060" />
+        </mxCell>
+        <mxCell id="edge0" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=block;strokeColor=#183544;fontSize=20;" edge="1" parent="1" source="ready" target="frame">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="edge1" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=block;strokeColor=#183544;fontSize=20;" edge="1" parent="1" source="frame" target="crypt">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="edge2" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=block;strokeColor=#183544;fontSize=20;" edge="1" parent="1" source="crypt" target="policy">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="edge3" value="ya" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=block;strokeColor=#183544;fontSize=20;" edge="1" parent="1" source="policy" target="release">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="edge4" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=block;strokeColor=#183544;fontSize=20;" edge="1" parent="1" source="release" target="last">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="edge5" value="ya" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=block;strokeColor=#183544;fontSize=20;" edge="1" parent="1" source="last" target="commit">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="edge6" value="terpotong / berlebih / overflow" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=block;strokeColor=#183544;fontSize=20;" edge="1" parent="1" source="frame" target="reject">
+          <mxGeometry as="geometry" relative="1">
+            <Array as="points">
+              <mxPoint x="880" y="252" />
+              <mxPoint x="880" y="545" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="edge7" value="gagal" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=block;strokeColor=#183544;fontSize=20;" edge="1" parent="1" source="policy" target="reject">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="edge8" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=block;strokeColor=#183544;fontSize=20;" edge="1" parent="1" source="release" target="stall">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="edge9" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=block;strokeColor=#183544;fontSize=20;" edge="1" parent="1" source="stall" target="release">
+          <mxGeometry as="geometry" relative="1">
+            <Array as="points">
+              <mxPoint x="160" y="670" />
+              <mxPoint x="475" y="670" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="edge10" value="belum" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=block;strokeColor=#183544;fontSize=20;" edge="1" parent="1" source="last" target="release">
+          <mxGeometry as="geometry" relative="1">
+            <Array as="points">
+              <mxPoint x="825" y="877" />
+              <mxPoint x="825" y="745" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="edge11" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=block;strokeColor=#183544;fontSize=20;" edge="1" parent="1" source="reject" target="cleanup">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="edge12" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=block;strokeColor=#183544;fontSize=20;" edge="1" parent="1" source="cleanup" target="recover">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="edge13" value="scrub" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=block;strokeColor=#183544;fontSize=20;" edge="1" parent="1" source="commit" target="recover">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="ready" value="READY dan sesi aktif&lt;br&gt;Satu frame sedang diproses" style="rounded=0;whiteSpace=wrap;html=1;fontFamily=Arial;fontSize=24;fontColor=#183544;strokeColor=#183544;fillColor=#EEF0F2;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="310" y="65" width="330" height="95" />
+        </mxCell>
+        <mxCell id="frame" value="Kumpulkan lalu freeze frame&lt;br&gt;Jumlah byte = 32 + L + 16" style="rounded=0;whiteSpace=wrap;html=1;fontFamily=Arial;fontSize=24;fontColor=#183544;strokeColor=#183544;fillColor=#DCEAF4;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="310" y="205" width="330" height="95" />
+        </mxCell>
+        <mxCell id="crypt" value="Ascon RX → buffer privat&lt;br&gt;Tunggu hasil autentikasi" style="rounded=0;whiteSpace=wrap;html=1;fontFamily=Arial;fontSize=24;fontColor=#183544;strokeColor=#183544;fillColor=#DCEAF4;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="310" y="345" width="330" height="95" />
+        </mxCell>
+        <mxCell id="policy" value="Tag / format sah?&lt;br&gt;Sesi / tujuan benar?&lt;br&gt;Sequence baru?" style="rhombus;whiteSpace=wrap;html=1;fontFamily=Arial;fontSize=23;fontColor=#183544;strokeColor=#183544;fillColor=#DCEAF4;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="250" y="485" width="450" height="170" />
+        </mxCell>
+        <mxCell id="release" value="Transfer ke shadow aplikasi&lt;br&gt;valid &amp;amp;&amp;amp; ready" style="rounded=0;whiteSpace=wrap;html=1;fontFamily=Arial;fontSize=24;fontColor=#183544;strokeColor=#183544;fillColor=#E0EFEA;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="310" y="700" width="330" height="90" />
+        </mxCell>
+        <mxCell id="last" value="Beat terakhir diterima?" style="rhombus;whiteSpace=wrap;html=1;fontFamily=Arial;fontSize=23;fontColor=#183544;strokeColor=#183544;fillColor=#E0EFEA;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="280" y="820" width="390" height="115" />
+        </mxCell>
+        <mxCell id="commit" value="COMMIT satu edge&lt;br&gt;Live payload + last_seq" style="rounded=0;whiteSpace=wrap;html=1;fontFamily=Arial;fontSize=23;fontColor=#183544;strokeColor=#183544;fillColor=#E0EFEA;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="285" y="985" width="380" height="75" />
+        </mxCell>
+        <mxCell id="stall" value="ready = 0&lt;br&gt;Tahan data bytes last&lt;br&gt;Watchdog aktif" style="rounded=0;whiteSpace=wrap;html=1;fontFamily=Arial;fontSize=23;fontColor=#183544;strokeColor=#183544;fillColor=#EEF0F2;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="40" y="700" width="230" height="130" />
+        </mxCell>
+        <mxCell id="reject" value="BATALKAN&lt;br&gt;app_valid = 0&lt;br&gt;Tidak ada commit" style="rounded=0;whiteSpace=wrap;html=1;fontFamily=Arial;fontSize=25;fontColor=#183544;strokeColor=#183544;fillColor=#FBE9E7;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="1030" y="485" width="290" height="120" />
+        </mxCell>
+        <mxCell id="cleanup" value="Buang shadow&lt;br&gt;Scrub buffer privat&lt;br&gt;Live state tetap" style="rounded=0;whiteSpace=wrap;html=1;fontFamily=Arial;fontSize=25;fontColor=#183544;strokeColor=#183544;fillColor=#EEF0F2;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="1030" y="710" width="290" height="130" />
+        </mxCell>
+        <mxCell id="recover" value="Cleanup → READY&lt;br&gt;Reset/fault mencabut sesi&lt;br&gt;Provisioning baru" style="rounded=0;whiteSpace=wrap;html=1;fontFamily=Arial;fontSize=23;fontColor=#183544;strokeColor=#183544;fillColor=#EEF0F2;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="1000" y="955" width="345" height="105" />
+        </mxCell>
+        <mxCell id="interrupt" value="Abort / reset / timeout menutup gate." style="text;strokeColor=none;fillColor=none;whiteSpace=wrap;html=1;fontFamily=Arial;fontSize=21;fontColor=#183544;strokeColor=#183544;fillColor=#DCEAF4;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="45" y="945" width="850" height="30" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram name="04_budget" id="04_budget">
+    <mxGraphModel dx="1400" dy="710" grid="1" gridSize="10" page="1" pageScale="1" pageWidth="1400" pageHeight="710">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="title" value="Anggaran integrasi DE10-Nano   belum hasil fitting" style="text;strokeColor=none;fillColor=none;whiteSpace=wrap;html=1;fontFamily=Arial;fontSize=31;fontColor=#183544;strokeColor=#183544;fillColor=#DCEAF4;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="30" y="10" width="1340" height="55" />
+        </mxCell>
+        <mxCell id="t0_0" value="Resource" style="rounded=0;whiteSpace=wrap;html=1;fontFamily=Arial;fontSize=26;fontColor=#183544;strokeColor=#183544;fillColor=#DCEAF4;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="30" y="100" width="280" height="65" />
+        </mxCell>
+        <mxCell id="t0_1" value="Batas rancangan" style="rounded=0;whiteSpace=wrap;html=1;fontFamily=Arial;fontSize=26;fontColor=#183544;strokeColor=#183544;fillColor=#DCEAF4;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="310" y="100" width="320" height="65" />
+        </mxCell>
+        <mxCell id="t0_2" value="Kapasitas A6" style="rounded=0;whiteSpace=wrap;html=1;fontFamily=Arial;fontSize=26;fontColor=#183544;strokeColor=#183544;fillColor=#DCEAF4;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="630" y="100" width="340" height="65" />
+        </mxCell>
+        <mxCell id="t0_3" value="Porsi anggaran" style="rounded=0;whiteSpace=wrap;html=1;fontFamily=Arial;fontSize=26;fontColor=#183544;strokeColor=#183544;fillColor=#DCEAF4;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="970" y="100" width="360" height="65" />
+        </mxCell>
+        <mxCell id="t1_0" value="ALM" style="rounded=0;whiteSpace=wrap;html=1;fontFamily=Arial;fontSize=26;fontColor=#183544;strokeColor=#183544;fillColor=#FFFFFF;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="30" y="165" width="280" height="65" />
+        </mxCell>
+        <mxCell id="t1_1" value="≤6.000" style="rounded=0;whiteSpace=wrap;html=1;fontFamily=Arial;fontSize=26;fontColor=#183544;strokeColor=#183544;fillColor=#FFFFFF;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="310" y="165" width="320" height="65" />
+        </mxCell>
+        <mxCell id="t1_2" value="41.910" style="rounded=0;whiteSpace=wrap;html=1;fontFamily=Arial;fontSize=26;fontColor=#183544;strokeColor=#183544;fillColor=#FFFFFF;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="630" y="165" width="340" height="65" />
+        </mxCell>
+        <mxCell id="t1_3" value="14,32%" style="rounded=0;whiteSpace=wrap;html=1;fontFamily=Arial;fontSize=26;fontColor=#183544;strokeColor=#183544;fillColor=#FFFFFF;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="970" y="165" width="360" height="65" />
+        </mxCell>
+        <mxCell id="t2_0" value="Register" style="rounded=0;whiteSpace=wrap;html=1;fontFamily=Arial;fontSize=26;fontColor=#183544;strokeColor=#183544;fillColor=#EEF0F2;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="30" y="230" width="280" height="65" />
+        </mxCell>
+        <mxCell id="t2_1" value="≤5.000" style="rounded=0;whiteSpace=wrap;html=1;fontFamily=Arial;fontSize=26;fontColor=#183544;strokeColor=#183544;fillColor=#EEF0F2;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="310" y="230" width="320" height="65" />
+        </mxCell>
+        <mxCell id="t2_2" value="167.640" style="rounded=0;whiteSpace=wrap;html=1;fontFamily=Arial;fontSize=26;fontColor=#183544;strokeColor=#183544;fillColor=#EEF0F2;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="630" y="230" width="340" height="65" />
+        </mxCell>
+        <mxCell id="t2_3" value="2,98%" style="rounded=0;whiteSpace=wrap;html=1;fontFamily=Arial;fontSize=26;fontColor=#183544;strokeColor=#183544;fillColor=#EEF0F2;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="970" y="230" width="360" height="65" />
+        </mxCell>
+        <mxCell id="t3_0" value="M10K" style="rounded=0;whiteSpace=wrap;html=1;fontFamily=Arial;fontSize=26;fontColor=#183544;strokeColor=#183544;fillColor=#FFFFFF;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="30" y="295" width="280" height="65" />
+        </mxCell>
+        <mxCell id="t3_1" value="≤6 blok" style="rounded=0;whiteSpace=wrap;html=1;fontFamily=Arial;fontSize=26;fontColor=#183544;strokeColor=#183544;fillColor=#FFFFFF;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="310" y="295" width="320" height="65" />
+        </mxCell>
+        <mxCell id="t3_2" value="557 blok" style="rounded=0;whiteSpace=wrap;html=1;fontFamily=Arial;fontSize=26;fontColor=#183544;strokeColor=#183544;fillColor=#FFFFFF;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="630" y="295" width="340" height="65" />
+        </mxCell>
+        <mxCell id="t3_3" value="1,08%" style="rounded=0;whiteSpace=wrap;html=1;fontFamily=Arial;fontSize=26;fontColor=#183544;strokeColor=#183544;fillColor=#FFFFFF;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="970" y="295" width="360" height="65" />
+        </mxCell>
+        <mxCell id="t4_0" value="DSP" style="rounded=0;whiteSpace=wrap;html=1;fontFamily=Arial;fontSize=26;fontColor=#183544;strokeColor=#183544;fillColor=#EEF0F2;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="30" y="360" width="280" height="65" />
+        </mxCell>
+        <mxCell id="t4_1" value="0" style="rounded=0;whiteSpace=wrap;html=1;fontFamily=Arial;fontSize=26;fontColor=#183544;strokeColor=#183544;fillColor=#EEF0F2;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="310" y="360" width="320" height="65" />
+        </mxCell>
+        <mxCell id="t4_2" value="112 blok" style="rounded=0;whiteSpace=wrap;html=1;fontFamily=Arial;fontSize=26;fontColor=#183544;strokeColor=#183544;fillColor=#EEF0F2;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="630" y="360" width="340" height="65" />
+        </mxCell>
+        <mxCell id="t4_3" value="0%" style="rounded=0;whiteSpace=wrap;html=1;fontFamily=Arial;fontSize=26;fontColor=#183544;strokeColor=#183544;fillColor=#EEF0F2;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="970" y="360" width="360" height="65" />
+        </mxCell>
+        <mxCell id="t5_0" value="FPGA PLL" style="rounded=0;whiteSpace=wrap;html=1;fontFamily=Arial;fontSize=26;fontColor=#183544;strokeColor=#183544;fillColor=#FFFFFF;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="30" y="425" width="280" height="65" />
+        </mxCell>
+        <mxCell id="t5_1" value="≤1" style="rounded=0;whiteSpace=wrap;html=1;fontFamily=Arial;fontSize=26;fontColor=#183544;strokeColor=#183544;fillColor=#FFFFFF;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="310" y="425" width="320" height="65" />
+        </mxCell>
+        <mxCell id="t5_2" value="6" style="rounded=0;whiteSpace=wrap;html=1;fontFamily=Arial;fontSize=26;fontColor=#183544;strokeColor=#183544;fillColor=#FFFFFF;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="630" y="425" width="340" height="65" />
+        </mxCell>
+        <mxCell id="t5_3" value="16,67%" style="rounded=0;whiteSpace=wrap;html=1;fontFamily=Arial;fontSize=26;fontColor=#183544;strokeColor=#183544;fillColor=#FFFFFF;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="970" y="425" width="360" height="65" />
+        </mxCell>
+        <mxCell id="mem" value="Buffer logis 3.200 bit = FIFO 1.280 + frame 896 + privat 512 + shadow 512&lt;br&gt;Live payload 512 bit, core state, key/context dan packing dihitung terpisah." style="rounded=0;whiteSpace=wrap;html=1;fontFamily=Arial;fontSize=25;fontColor=#183544;strokeColor=#183544;fillColor=#EEF0F2;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="30" y="520" width="1340" height="85" />
+        </mxCell>
+        <mxCell id="note" value="Pemetaan M10K bergantung pada bank, port dan inference. Laporkan delta wrapper terhadap core pada part dan konfigurasi yang sama." style="text;strokeColor=none;fillColor=none;whiteSpace=wrap;html=1;fontFamily=Arial;fontSize=24;fontColor=#183544;strokeColor=#183544;fillColor=#DCEAF4;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="30" y="630" width="1340" height="60" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

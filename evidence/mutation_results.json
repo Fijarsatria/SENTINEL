@@ -1,0 +1,12 @@
+[
+  {
+    "mutation": "skip_authentication",
+    "detected": true,
+    "expected_failure": "[3510000] %Fatal: tb_sentinel.sv:84: Assertion failed in tb_sentinel: Premature application output at case 2498"
+  },
+  {
+    "mutation": "skip_replay_check",
+    "detected": true,
+    "expected_failure": "[11720000] %Fatal: tb_sentinel.sv:227: Assertion failed in tb_sentinel: Commit mismatch case 2500"
+  }
+]

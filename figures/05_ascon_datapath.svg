@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1230" height="360" viewBox="0 0 1230 360"><title>Datapath fungsional core Ascon v1</title><defs><marker id="a" viewBox="0 0 12 12" refX="11" refY="6" markerWidth="11" markerHeight="11" orient="auto"><path d="M1 1 L11 6 L1 11Z" fill="#111"/></marker></defs><rect width="100%" height="100%" fill="white"/><style>text{font-family:Arial,Helvetica,sans-serif;fill:#111}path,line{stroke-linecap:round;stroke-linejoin:round}</style>
+<rect x="25" y="125" width="225" height="104" rx="0" fill="white" stroke="#111" stroke-width="2"/>
+<text x="137.5" y="155.93" font-size="21" font-weight="400" text-anchor="middle">Input 32 bit</text>
+<text x="137.5" y="183.93" font-size="21" font-weight="400" text-anchor="middle">Key terpisah / BDI</text>
+<text x="137.5" y="211.93" font-size="21" font-weight="400" text-anchor="middle">Nonce / AD / CT / tag</text>
+<rect x="323" y="125" width="262" height="104" rx="0" fill="#F0F0F0" stroke="#111" stroke-width="2"/>
+<text x="454.0" y="169.25" font-size="25" font-weight="400" text-anchor="middle">Register state</text>
+<text x="454.0" y="201.25" font-size="25" font-weight="400" text-anchor="middle">5 × 64 = 320 bit</text>
+<rect x="666" y="125" width="270" height="104" rx="0" fill="white" stroke="#111" stroke-width="2"/>
+<text x="801.0" y="169.42" font-size="24" font-weight="400" text-anchor="middle">Ascon-p</text>
+<text x="801.0" y="200.42" font-size="24" font-weight="400" text-anchor="middle">1 round per siklus</text>
+<path d="M251 177 H318" fill="none" stroke="#111" stroke-width="2" marker-end="url(#a)"/>
+<path d="M586 160 H661" fill="none" stroke="#111" stroke-width="2" marker-end="url(#a)"/>
+<path d="M802 230 V279 H454 V234" fill="none" stroke="#111" stroke-width="2" marker-end="url(#a)"/>
+<text x="630" y="305" font-size="21" font-weight="400" text-anchor="middle">Iterasi permutasi</text>
+<rect x="994" y="29" width="209" height="83" rx="0" fill="white" stroke="#111" stroke-width="2"/>
+<text x="1098.5" y="63.43" font-size="21" font-weight="400" text-anchor="middle">BDO 32 bit</text>
+<text x="1098.5" y="91.43" font-size="21" font-weight="400" text-anchor="middle">Plaintext privat</text>
+<path d="M454 124 V71 H989" fill="none" stroke="#111" stroke-width="2" marker-end="url(#a)"/>
+<rect x="994" y="232" width="209" height="83" rx="0" fill="white" stroke="#111" stroke-width="2"/>
+<text x="1098.5" y="266.09" font-size="23" font-weight="400" text-anchor="middle">auth_valid</text>
+<text x="1098.5" y="296.09" font-size="23" font-weight="400" text-anchor="middle">auth</text>
+<path d="M937 177 H968 V273 H989" fill="none" stroke="#111" stroke-width="2" marker-end="url(#a)"/>
+<text x="614" y="344" font-size="21" font-weight="400" text-anchor="middle">Diagram fungsi dari RTL vendor, bukan hasil penempatan fisik FPGA atau ASIC.</text>
+</svg>

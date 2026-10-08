@@ -1,0 +1,5 @@
+PASS 10290 parser frames; 1314 accepted, 8976 rejected
+- tb_frame_parser.sv:92: Verilog $finish
+- S i m u l a t i o n   R e p o r t: Verilator 5.048 2026-04-26
+- Verilator: $finish at 47ms; walltime 0.745 s; speed 66.481 ms/s
+- Verilator: cpu 0.713 s on 1 threads; allocated 7 MB

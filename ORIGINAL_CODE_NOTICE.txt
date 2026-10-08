@@ -1,0 +1,1 @@
+Original SENTINEL wrapper, testbench and project documentation are supplied by team TRINITY LFA for PERURI Chip Hackathon 2026 evaluation. No general open-source reuse license is granted by this notice. Contact the team to arrange reuse. Third-party material retains its own included license. Publication of this repository does not change third-party license terms.

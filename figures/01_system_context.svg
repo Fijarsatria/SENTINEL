@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1250" height="330" viewBox="0 0 1250 330"><title>Konsep penerapan SENTINEL pada Cyclone V SoC</title><defs><marker id="a" viewBox="0 0 12 12" refX="11" refY="6" markerWidth="11" markerHeight="11" orient="auto"><path d="M1 1 L11 6 L1 11Z" fill="#111"/></marker></defs><rect width="100%" height="100%" fill="white"/><style>text{font-family:Arial,Helvetica,sans-serif;fill:#111}path,line{stroke-linecap:round;stroke-linejoin:round}</style>
+<rect x="15" y="160" width="210" height="82" rx="0" fill="white" stroke="#111" stroke-width="2"/>
+<text x="120.0" y="193.59" font-size="23" font-weight="400" text-anchor="middle">Pengirim</text>
+<text x="120.0" y="223.59" font-size="23" font-weight="400" text-anchor="middle">perintah tepercaya</text>
+<rect x="300" y="20" width="670" height="275" rx="0" fill="white" stroke="#111" stroke-width="2"/>
+<text x="635" y="51" font-size="25" font-weight="700" text-anchor="middle">Satu chip Cyclone V SoC pada DE10-Nano</text>
+<rect x="330" y="76" width="260" height="80" rx="0" fill="#F1F1F1" stroke="#111" stroke-width="2"/>
+<text x="460.0" y="108.59" font-size="23" font-weight="400" text-anchor="middle">HPS ARM</text>
+<text x="460.0" y="138.59" font-size="23" font-weight="400" text-anchor="middle">Provisioning dan status</text>
+<rect x="330" y="182" width="610" height="82" rx="0" fill="#F5F5F5" stroke="#111" stroke-width="2"/>
+<text x="635.0" y="215.25" font-size="25" font-weight="400" text-anchor="middle">FPGA fabric</text>
+<text x="635.0" y="247.25" font-size="25" font-weight="400" text-anchor="middle">SENTINEL RX IP + register aplikasi</text>
+<path d="M460 157 V178" fill="none" stroke="#111" stroke-width="2" stroke-dasharray="8 6" marker-end="url(#a)"/>
+<text x="660" y="171" font-size="20" font-weight="400" text-anchor="middle">Bridge MMIO</text>
+<path d="M226 201 H325" fill="none" stroke="#111" stroke-width="2" marker-end="url(#a)"/>
+<text x="266" y="173" font-size="21" font-weight="400" text-anchor="middle">SPI</text>
+<rect x="1030" y="183" width="205" height="80" rx="0" fill="white" stroke="#111" stroke-width="2"/>
+<text x="1132.5" y="215.59" font-size="23" font-weight="400" text-anchor="middle">LED demo</text>
+<text x="1132.5" y="245.59" font-size="23" font-weight="400" text-anchor="middle">Keluaran aplikasi</text>
+<path d="M941 224 H1026" fill="none" stroke="#111" stroke-width="2" marker-end="url(#a)"/>
+<text x="987" y="196" font-size="19" font-weight="400" text-anchor="middle">GPIO</text>
+<text x="635" y="323" font-size="22" font-weight="400" text-anchor="middle">Perintah ditolak tidak mengubah register aplikasi</text>
+</svg>

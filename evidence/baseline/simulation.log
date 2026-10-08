@@ -1,0 +1,2 @@
+PASS 2531 RTL transactions; no premature output or rejected-frame application effect
+- tb_sentinel.sv:203: Verilog $finish

@@ -1,0 +1,27 @@
+name: RTL verification
+on: [push, pull_request, workflow_dispatch]
+permissions:
+  contents: read
+jobs:
+  simulation:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install simulator
+        run: sudo apt-get update -qq && sudo apt-get install -y verilator build-essential
+      - name: Run core guard application parser and contract suites
+        run: make verify
+      - name: Check deliberate acceptance bugs are detected
+        run: make mutations
+      - name: Check shipped evidence integrity
+        run: make snapshot
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: simulation-evidence
+          path: |
+            verification/*.csv
+            verification/*.json
+            verification/*.log
+            verification/tool_versions.txt
