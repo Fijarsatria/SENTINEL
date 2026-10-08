@@ -156,5 +156,5 @@ for t in range(0,maxc+1,50):
 d.text((x0,647),'Siklus relatif, 20 ns per siklus. Trace RTL, tidak termasuk jalur SPI/CDC.',font=font(23),fill=INK)
 img.save(F/'06_trace.png')
 stats=json.loads((R/'evidence/summary.json').read_text())
-ROOT.joinpath('figures/visual_metrics.json').write_text(json.dumps({'trace_start_cycle':start,'trace_cycles':maxc,'core_stats':stats},indent=2)+'\n',encoding='utf-8',newline='\n')
+ROOT.joinpath('figures/visual_metrics.json').write_bytes((json.dumps({'trace_start_cycle':start,'trace_cycles':maxc,'core_stats':stats},indent=2)+'\n').encode('utf-8'))
 print('Generated editable draw.io diagrams, proposal figures and trace from actual CSV.')
